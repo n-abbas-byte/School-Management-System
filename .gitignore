@@ -1,0 +1,21 @@
+# Compiled executables
+menu
+structure
+*.out
+*.exe
+
+# Object files
+*.o
+*.obj
+
+# Build directories (if you ever add one)
+build/
+bin/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE folders
+.vscode/
+*.swp
