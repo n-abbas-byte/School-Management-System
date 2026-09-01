@@ -37,6 +37,12 @@
         static int total_persons(){
             return persons.size();
         }
+        void deletePerson(){
+            is_deleted = true;
+        }
+        bool status(){
+            return is_deleted;
+        }
     };
 
     class Student: public Person{

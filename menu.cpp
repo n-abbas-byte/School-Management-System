@@ -13,7 +13,7 @@ void Basic_menu();
 
 void Stud_menu(){
     Header();
-    cout<< WHITE <<"1. View Student" << endl << "2. Update Student" << endl << "3. Delete Students" << endl << "4. Veiw all students \n5. Enter a new student\n6. Go back\nEnter your choice: " << RESET;
+    cout<< WHITE <<"1. View Student" << endl << "2. Update Student" << endl << "3. Delete Students" << endl << "4. Veiw all students \n5. Enter a new student\n6.Show all deleted students\n7. Go back\nEnter your choice: " << RESET;
     int choice;
     cin >> choice;
     if (choice == 1){
@@ -24,19 +24,25 @@ void Stud_menu(){
         UpdateStudent();
         return Stud_menu();
     }
+    else if (choice == 3){
+        DeleteStudent();
+        return Stud_menu();
+    }
+    else if (choice == 4){
+        ViewAllStudents();
+        return Stud_menu();
+    }
+
     else if (choice == 5){
         EnterNewStudent();
         return Stud_menu();
         }
     else if (choice == 6){
-        return Basic_menu();
-    }
-    else if (choice == 3 || choice == 4){
-        printWarning("This part is under development");
-        pause(2);
-        cout<< WHITE << "Returning to Student Menu..." << RESET << endl;
-        pause(1.5);
+        DELETEDSTUDENT();
         return Stud_menu();
+    }
+    else if (choice == 7){
+        Basic_menu();
     }
     else{
         printWarning("Invalid choice, choose from 1, 2, 3, 4 or 5. Please try again.");

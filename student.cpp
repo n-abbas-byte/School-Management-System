@@ -8,6 +8,7 @@ void UpdateStudent();
 void DeleteStudent();
 void ViewAllStudents();
 void EnterNewStudent();
+void DELETEDSTUDENT();
 
 // Definition of functions:
 
@@ -106,4 +107,62 @@ void UpdateStudent(){
         cin.ignore();
         cin.get();
     }
+}
+
+void DeleteStudent(){
+    Header();
+    cout << BOLD << BRIGHT_CYAN << "Delete Student" << RESET << endl;
+    cout << "Enter Student ID to delete: ";
+    int id;
+    cin >> id;
+    bool found = false;
+    Student* student = Student::getStudentRef(id, found);
+    if(found){
+        student->deletePerson();
+        printSuccess("Student deleted successfully!\nPress Enter to return to the Student Menu...");
+        cin.ignore();
+        cin.get();
+    }
+    else{
+        printError("Student with ID " + to_string(id) + " not found.");
+        printInfo("Press Enter to return to the Student Menu...");
+        cin.ignore();
+        cin.get();
+    }
+}
+
+void ViewAllStudents(){
+    Header();
+    cout << BOLD << BRIGHT_CYAN << "View All Students" << RESET << endl;
+    if(Student::students.empty()){
+        printInfo("No students found.");
+    }
+    else{
+        for(auto& student: Student::students){
+                Student::displayStudent(student.getID());
+                cout << "----------------------------------------" << endl;
+        }
+    }
+    printInfo("Press Enter to return to the Student Menu...");
+    cin.ignore();
+    cin.get();
+}
+
+void DELETEDSTUDENT(){
+    Header();
+    cout << BOLD << BRIGHT_CYAN << "View Deleted Students" << RESET << endl;
+    bool any_deleted = false;
+    for(auto& student: Student::students){
+        if(student.status()){
+            any_deleted = true;
+            Student::displayStudent(student.getID());
+            cout << "----------------------------------------" << endl;
+        }
+    }
+    if(!any_deleted){
+        printInfo("No deleted students found.");
+    }
+    printInfo("Press Enter to return to the Student Menu...");
+    cin.ignore();
+    cin.get();
 }
