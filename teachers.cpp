@@ -32,7 +32,19 @@ void DeleteTeacher() {
 }
 
 void ViewAllTeachers() {
-    printWarning("This part is under development");
+    cout << YELLOW << "Total Teachers: " << Teacher::total_teachers() << RESET << endl;
+    if(Teacher::teachers.empty()){
+        printInfo("No teachers found.");
+    }
+    else{
+        for(auto& teacher: Teacher::teachers){
+            teacher.display();
+            cout << "----------------------------------------" << endl;
+        }
+    }
+    printInfo("Press Enter to return to the Teacher Menu...");
+    cin.ignore();
+    cin.get();
     pause(2);
     cout<< WHITE << "Returning to Teacher Menu..." << RESET << endl;
     pause(1.5); 
