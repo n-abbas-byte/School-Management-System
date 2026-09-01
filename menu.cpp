@@ -14,6 +14,8 @@ void Basic_menu();
 
 void Stud_menu(){
     Header();
+    cout<< BRIGHT_CYAN << ITALIC << "Student Menu" << RESET << endl;
+    cout << YELLOW << "Total Students: " << Student::total_students() << RESET << endl;
     cout<< WHITE <<"1. View Student" << endl << "2. Update Student" << endl << "3. Delete Students" << endl << "4. Veiw all students \n5. Enter a new student\n6.Show all deleted students\n7. Go back\nEnter your choice: " << RESET;
     int choice;
     cin >> choice;
@@ -53,6 +55,8 @@ void Stud_menu(){
 }
 void Teach_menu(){
     Header();
+    cout<< BRIGHT_CYAN << ITALIC << "Teacher Menu" << RESET << endl;
+    cout << YELLOW << "Total Teachers: " << Teacher::total_teachers() << RESET << endl;
     cout<< WHITE <<"1. View Teacher" << endl << "2. Update Teacher" << endl << "3. Delete Teacher" << endl << "4. Veiw all Teachers \n5. Enter a new Teacher\n6. Go back\nEnter your choice: " << RESET;
     int choice;
     cin >> choice;

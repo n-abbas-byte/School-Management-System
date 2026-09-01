@@ -30,19 +30,28 @@
                 return father_name;
             }
             void virtual display(){}
-        static vector<Person> persons;
-        static void addPerson(Person person){
+            static vector<Person> persons;
+            static void addPerson(Person person){
             persons.push_back(person);
-        }
-        static int total_persons(){
+            }
+            static int total_persons(){
             return persons.size();
-        }
-        void deletePerson(){
-            is_deleted = true;
-        }
-        bool status(){
-            return is_deleted;
-        }
+            }
+            void deletePerson(){
+                is_deleted = true;
+            }
+            bool status(){
+                return is_deleted;
+            }
+            void setname(string name){
+                this->name = name;
+            }
+            void setID(int id){
+                this->ID = id;
+            }
+            void setfather_name(string father_name){
+                this->father_name = father_name;
+            }
     };
 
     class Student: public Person{
@@ -93,15 +102,6 @@
                     printError("Student with ID " + to_string(id) + " not found.");
                 }
             }
-            void setname(string name){
-                this->name = name;
-            }
-            void setID(int id){
-                this->ID = id;
-            }
-            void setfather_name(string father_name){
-                this->father_name = father_name;
-            }
             void setcourse(vector<string> course){
                 this->course = course;
             }
@@ -125,11 +125,14 @@
             found = false;
             return nullptr;}
 
-        static vector<Student> students;
-        static void addStudent(Student student){
-            students.push_back(student);
-            addPerson(student);
-        }
+            static vector<Student> students;
+            static void addStudent(Student student){
+                students.push_back(student);
+                addPerson(student);
+            }
+            static int total_students(){
+                return students.size();
+            }
     };
 
     class Teacher: public Person{
@@ -161,12 +164,37 @@
                 else {
                     printError("This teacher record has been deleted.");
                 }
-        }
-        static vector<Teacher> teachers;
-        static void addTeacher(Teacher teacher){
-            teachers.push_back(teacher);
-            addPerson(teacher);
-        }
+            }
+            static vector<Teacher> teachers;
+            static void addTeacher(Teacher teacher){
+                teachers.push_back(teacher);
+                addPerson(teacher);
+            }
+            void setsubject(string subject){
+                this->subject = subject;
+            }
+            void setexperience(int experience){
+                this->experience = experience;
+            }
+            string getsubject(){
+                return subject;
+            }
+            int getexperience(){
+                return experience;
+            }
+            static Teacher* getTeacherRef(int id, bool& found){
+            for(auto& T : teachers){
+            if(T.ID == id && !T.is_deleted){
+                found = true;
+                return &T;
+                }
+            }
+            found = false;
+            return nullptr;
+            }
+            static int total_teachers(){
+                return teachers.size();
+            }
     };
 
     vector<Person> Person::persons;

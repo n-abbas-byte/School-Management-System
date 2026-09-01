@@ -134,6 +134,7 @@ void DeleteStudent(){
 void ViewAllStudents(){
     Header();
     cout << BOLD << BRIGHT_CYAN << "View All Students" << RESET << endl;
+    cout << YELLOW << "Total Students: " << Student::total_students() << RESET << endl;
     if(Student::students.empty()){
         printInfo("No students found.");
     }

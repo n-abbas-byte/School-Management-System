@@ -39,7 +39,31 @@ void ViewAllTeachers() {
 }
 
 void EnterNewTeacher() {
-    printWarning("This part is under development");
+    Header();
+    cout << BOLD << BRIGHT_CYAN << "Enter New Teacher" << RESET << endl;
+    string input;
+    Teacher new_teacher("", 0, "", {}, 0.0);
+    cout << "Enter Teacher Name: ";
+    cin.ignore();
+    getline(cin, input);
+    new_teacher.setname(input);
+    cout << "Enter Teacher ID: ";
+    cin >> input;
+    new_teacher.setID(stoi(input));
+    cout << "Enter Father's Name: ";
+    cin.ignore();
+    getline(cin, input);
+    new_teacher.setfather_name(input);
+    cout << "Enter Subject: ";
+    getline(cin, input);
+    new_teacher.setsubject(input);
+    cout << "Enter Experience (in years): ";
+    getline(cin, input);
+    new_teacher.setexperience(stoi(input));
+    Teacher::addTeacher(new_teacher);
+    printSuccess("Teacher added successfully!\nPress Enter to return to the Teacher Menu...");
+    cin.ignore();
+    cin.get();
     pause(2);
     cout<< WHITE << "Returning to Teacher Menu..." << RESET << endl;
     pause(1.5);
