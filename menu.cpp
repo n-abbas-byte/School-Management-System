@@ -2,6 +2,7 @@
 #include "console_utils.h"
 #include "structure.h"
 #include "student.cpp"
+#include "teachers.cpp"
 using namespace std;
 
 // Declaration of functions:
@@ -51,9 +52,38 @@ void Stud_menu(){
     }
 }
 void Teach_menu(){
-    printWarning("This part is under development");
-    pause(2);
-    Basic_menu();
+    Header();
+    cout<< WHITE <<"1. View Teacher" << endl << "2. Update Teacher" << endl << "3. Delete Teacher" << endl << "4. Veiw all Teachers \n5. Enter a new Teacher\n6. Go back\nEnter your choice: " << RESET;
+    int choice;
+    cin >> choice;
+    if (choice == 1){
+        ViewTeacher();
+        return Teach_menu();
+    }
+    if (choice == 2){
+        UpdateTeacher();
+        return Teach_menu();
+    }
+    else if (choice == 3){
+        DeleteTeacher();
+        return Teach_menu();
+    }
+    else if (choice == 4){
+        ViewAllTeachers();
+        return Teach_menu();
+    }
+    else if (choice == 5){
+        EnterNewTeacher();
+        return Teach_menu();
+    }
+    else if (choice == 6){
+        Basic_menu();
+    }
+    else{
+        printWarning("Invalid choice, choose from 1, 2, 3, 4 or 5. Please try again.");
+        pause(2);
+        return Teach_menu();
+    }
 }
 
 void Basic_menu(){
