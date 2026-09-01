@@ -35,8 +35,13 @@ void EnterNewStudent(){
     new_student.setname(s);
     cout << "Enter Student ID: ";
     int id;
-    cin >> id;
-    new_student.setID(id);
+    try {
+        cin >> id;
+        new_student.setID(id);
+    } catch (const std::exception& e) {
+        printError("Invalid input for Student ID.");
+        return;
+    }
     cout << "Enter Father's Name: ";
     cin.ignore();
     getline(cin, s);

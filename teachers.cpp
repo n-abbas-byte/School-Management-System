@@ -60,8 +60,13 @@ void EnterNewTeacher() {
     getline(cin, input);
     new_teacher.setname(input);
     cout << "Enter Teacher ID: ";
-    cin >> input;
-    new_teacher.setID(stoi(input));
+    try {
+        cin >> input;
+        new_teacher.setID(stoi(input));
+    } catch (const std::exception& e) {
+        printError("Invalid input for Teacher ID.");
+        return;
+    }
     cout << "Enter Father's Name: ";
     cin.ignore();
     getline(cin, input);
@@ -70,8 +75,13 @@ void EnterNewTeacher() {
     getline(cin, input);
     new_teacher.setsubject(input);
     cout << "Enter Experience (in years): ";
-    getline(cin, input);
-    new_teacher.setexperience(stoi(input));
+    try {
+        getline(cin, input);
+        new_teacher.setexperience(stoi(input));
+    } catch (const std::exception& e) {
+        printError("Invalid input for Experience.");
+        return;
+    }
     Teacher::addTeacher(new_teacher);
     printSuccess("Teacher added successfully!\nPress Enter to return to the Teacher Menu...");
     cin.ignore();
